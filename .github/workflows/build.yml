@@ -1,0 +1,11 @@
+      - run: unzip -q shadow-only-source.zip
+      - run: |
+          cd shadow-only
+          pip install -r requirements.txt
+          chmod +x build.sh
+          ./build.sh setup
+          ./build.sh pack
+      - uses: actions/upload-artifact@v4
+        with:
+          name: shadow-only-mcpack
+          path: shadow-only/build/*
